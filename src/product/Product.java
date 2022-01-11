@@ -1,6 +1,14 @@
 package product;
 
 public class Product {
+
+    public Product(String name) {
+        this.name = name;
+}
+
+    public Product() {
+    }
+
     public String getName() {
         return name;
     }
@@ -20,4 +28,14 @@ public class Product {
     }
 
     private double price;
+
+    public void setDescription(String name) {
+        this.name = name;
+        System.out.println("Описание");
+    }
+
+
+    public void pack(){ System.out.println("Упаковать");}
+
+
 }
