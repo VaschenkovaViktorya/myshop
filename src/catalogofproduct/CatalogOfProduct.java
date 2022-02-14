@@ -9,7 +9,7 @@ public class CatalogOfProduct {
         return catalog;
     }
 
-    private static String[] catalog={
+    private  String[] catalog={
             "Продукты",
             "Хозтовары",
             "Одежда",
@@ -17,7 +17,7 @@ public class CatalogOfProduct {
             "Дача, сад",
             "Автотовары"
     };
-    public static void openCatalog(){
+    public  void openCatalog(){
         for (String s:catalog
              ) {
             System.out.println(s);

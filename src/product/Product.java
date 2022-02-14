@@ -1,6 +1,6 @@
 package product;
 
-public class Product {
+public abstract class Product implements Purchase {
     public String getName() {
         return name;
     }

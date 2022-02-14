@@ -1,6 +1,6 @@
 package product;
 
-public class Milk extends Product {
+public class Milk extends MilkProduct {
       private  int ostatok=5;
 
 

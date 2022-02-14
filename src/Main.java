@@ -1,23 +1,27 @@
+import catalogofproduct.CatalogOfProduct;
 import customer.Customer;
+import customer.Vip;
+import customer.VipCustomer;
 import product.Kefir;
 import product.Milk;
+
+import java.util.Collection;
 
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello");
-        // CatalogOfProduct.openCatalog();
-        Customer vasya= new Customer();
-        Customer vasya1= new Customer();
-        Milk milk= new Milk();
-        vasya.addToBascket(milk);
-        vasya.addToBascket(milk);
-        vasya.addToBascket(milk);
-        vasya.addToBascket(new Kefir());;
-        vasya1.addToBascket(milk);
-        vasya1.addToBascket(new Kefir());
-        vasya.getPriceofProductinBasket();
-        vasya1.getPriceofProductinBasket();
-        vasya1.buyProduct();
+        showCatalog();
+        Customer vasya = new Customer();
+        vasya.addToBasket(new Milk());
         System.out.println();
+    }
+
+    private static void showCatalog() {
+        CatalogOfProduct cat = new CatalogOfProduct();
+        cat.getCatalog();
+        for (String s : cat.getCatalog()) {
+            System.out.println(s);
+        }
+        ;
     }
 }
