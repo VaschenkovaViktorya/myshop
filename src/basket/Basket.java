@@ -4,6 +4,8 @@ import product.Product;
 
 public interface Basket {
     boolean addProduct(Product product);
-    boolean deleteProduct();
+    boolean deleteProduct(Product product);
     boolean clear();
+    boolean printBasket();
+    boolean findProduct(Product p);
 }

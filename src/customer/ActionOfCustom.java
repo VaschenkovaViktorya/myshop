@@ -6,5 +6,6 @@ public interface ActionOfCustom {
      boolean addToBasket(Product product);
      boolean deleteFromBasket(Product product);
      boolean payOrder();
+     boolean showBasket();
 
 }

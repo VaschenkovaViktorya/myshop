@@ -1,39 +1,47 @@
 package customer;
 
 import basket.BasketOnArray;
+import basket.BasketOnList;
+import product.Kefir;
 import product.Product;
 
 public abstract class ServicesCustomer {
-    BasketOnArray custBasket;
+   BasketOnList custBasket;
+   // BasketOnArray custBasket;
     private int i = 0;//для счетчика товаров
 
     public boolean addToBasket(Product product) {
         if (this.custBasket == null) {
-           custBasket = new BasketOnArray();
-            i = 0;
-            System.out.println("корзина создана");
+           custBasket = new BasketOnList();
+          // custBasket = new BasketOnArray();
         }
         custBasket.addProduct(product);
         return true;
     }
 
     public boolean deleteFromBasket(Product product) {
+        custBasket.deleteProduct(product);
+
         return false;
     }
 
 
+   boolean showBasket() {
+        custBasket.printBasket();
+        return false;
+    }
     public boolean payOrder() {
         return false;
     }
 
-    public int getPriceofProductInBasket() {
-        // Product[] basket = custBasket.array;
-        System.out.println("У покупателя " + " в корзине " + i + " товаров");
-        PrintProductInBasket(custBasket.array);//цикл For
-        findStoimost(custBasket.array); //цикл while
-        // System.out.println(basket[0].getPrice());
-        return findStoimost(custBasket.array);
-    }
+//    public int getPriceofProductInBasket() {
+//        // Product[] basket = custBasket.array;
+//        System.out.println("У покупателя " + " в корзине " + i + " товаров");
+//        PrintProductInBasket(custBasket.arrayOfProduct);//цикл For
+//        findStoimost(custBasket.arrayOfProduct); //цикл while
+//        // System.out.println(basket[0].getPrice());
+//        return findStoimost(custBasket.arrayOfProduct);
+//    }
 
     private void PrintProductInBasket(Product[] basket) {
         for (int j = 0; j < i; j++) {
@@ -52,19 +60,23 @@ public abstract class ServicesCustomer {
         return stoimost;
     }
 
-    public void buyProduct() {
-        System.out.println("*******************************");
-        System.out.println("Покупатель " + " оплатил товары ");
-        int j = 0;
-        do {
-            PrintProductInBasket(custBasket.array);
-            j++;
-        }
-        while (j < i);
-        findStoimost(custBasket.array);
-        System.out.println("Приходите к нам еще!)");
-
+    public void findProductInBasket(Product product) {
+        custBasket.findProduct(product);
     }
+
+//    public void buyProduct() {
+//        System.out.println("*******************************");
+//        System.out.println("Покупатель " + " оплатил товары ");
+//        int j = 0;
+//        do {
+//            PrintProductInBasket(custBasket.arrayOfProduct);
+//            j++;
+//        }
+//        while (j < i);
+//        findStoimost(custBasket.arrayOfProduct);
+//        System.out.println("Приходите к нам еще!)");
+//
+//    }
 
 
 }

@@ -1,6 +1,6 @@
 package customer;
 
-import basket.BasketOnArray;
+import basket.BasketOnList;
 
 public class Customer extends ServicesCustomer {
     public String getName() {
@@ -13,7 +13,7 @@ public class Customer extends ServicesCustomer {
 
     private String name;
 
-    BasketOnArray custBasket;
+    BasketOnList custBasket;
 
     public Customer() {
         name = "Вася";

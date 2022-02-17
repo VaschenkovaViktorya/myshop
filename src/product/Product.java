@@ -20,4 +20,10 @@ public abstract class Product implements Purchase {
     }
 
     private double price;
+
+    @Override
+    public String toString() {
+        return  name  +
+                " цена=" + price;
+    }
 }
