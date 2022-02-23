@@ -41,12 +41,12 @@ public class BasketOnArray implements Basket {
 
     @Override
     public boolean deleteProduct(Product product) {
-        for (int i = 0; i< arrayOfProduct.length; i++) {
+        for (int i = 0; i < arrayOfProduct.length; i++) {
             if (arrayOfProduct[i] == null)
                 continue;
             if (arrayOfProduct[i].getName() == product.getName()) {
-                System.out.println("товар "+ arrayOfProduct[i].getName()+" удален");
-                arrayOfProduct[i]=null;
+                System.out.println("товар " + arrayOfProduct[i].getName() + " удален");
+                arrayOfProduct[i] = null;
                 break;
             }
         }
@@ -61,11 +61,11 @@ public class BasketOnArray implements Basket {
 
     @Override
     public boolean printBasket() {
+        System.out.println("Печать содержимого корзины(Array)");
         for (Product product : arrayOfProduct) {
-            System.out.println("Печать содержимого корзины(Array)");
-            if (product==null)
+            if (product == null)
                 continue;
-            System.out.println("В корзине " +product);
+            System.out.println("В корзине " + product);
         }
 
         return false;
@@ -74,16 +74,16 @@ public class BasketOnArray implements Basket {
     @Override
     public boolean findProduct(Product p) {
         boolean isfinded = false;
-        for (Product product:
-             arrayOfProduct) {
-            if (product==p){
-                System.out.println("Товар "+p.getName() +" в корзине (Array) найден ");
-                isfinded=true;
+        for (Product product :
+                arrayOfProduct) {
+            if (product == p) {
+                System.out.println("Товар " + p.getName() + " в корзине (Array) найден ");
+                isfinded = true;
                 break;
             }
         }
-        if (!isfinded) System.out.println("Товар "+p.getName() + " в корзине (Array) не найден");
-       return false;
+        if (!isfinded) System.out.println("Товар " + p.getName() + " в корзине (Array) не найден");
+        return false;
     }
 
 }

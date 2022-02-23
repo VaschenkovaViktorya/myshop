@@ -2,18 +2,21 @@ package customer;
 
 import basket.BasketOnArray;
 import basket.BasketOnList;
+import basket.BasketOnSet;
 import product.Kefir;
 import product.Product;
 
 public abstract class ServicesCustomer {
-   BasketOnList custBasket;
-   // BasketOnArray custBasket;
+   //BasketOnList custBasket;
+    //BasketOnArray custBasket;
+    BasketOnSet custBasket;
     private int i = 0;//для счетчика товаров
 
     public boolean addToBasket(Product product) {
         if (this.custBasket == null) {
-           custBasket = new BasketOnList();
+           //custBasket = new BasketOnList();
           // custBasket = new BasketOnArray();
+            custBasket = new BasketOnSet();
         }
         custBasket.addProduct(product);
         return true;
@@ -26,7 +29,7 @@ public abstract class ServicesCustomer {
     }
 
 
-   boolean showBasket() {
+   public boolean showBasket() {
         custBasket.printBasket();
         return false;
     }

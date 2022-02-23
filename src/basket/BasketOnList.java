@@ -5,10 +5,10 @@ import product.Product;
 import java.util.ArrayList;
 
 public class BasketOnList implements Basket{
-ArrayList<Product> arrayOfProduct = new ArrayList<Product>();
+ArrayList<Product> listOfProduct = new ArrayList<Product>();
     @Override
     public boolean addProduct(Product product) {
-        arrayOfProduct.add(product);
+        listOfProduct.add(product);
         System.out.println("Товар добавлен "+product);
         //System.out.println(arrayOfProduct.size());
         return false;
@@ -16,7 +16,7 @@ ArrayList<Product> arrayOfProduct = new ArrayList<Product>();
 
     @Override
     public boolean deleteProduct(Product product) {
-        arrayOfProduct.remove(product);
+        listOfProduct.remove(product);
         System.out.println("Товар " +product+" удален из корзины");
         return false;
     }
@@ -30,7 +30,7 @@ ArrayList<Product> arrayOfProduct = new ArrayList<Product>();
     public boolean printBasket() {
         System.out.println("Печать содержимого корзины(Arraylist)");
       //  System.out.println(arrayOfProduct);
-        for (Product product:arrayOfProduct
+        for (Product product: listOfProduct
              ) {
             if (product==null)
                 continue;
@@ -41,7 +41,7 @@ ArrayList<Product> arrayOfProduct = new ArrayList<Product>();
 
     @Override
     public boolean findProduct(Product product) {
-        if (arrayOfProduct.contains(product)){
+        if (listOfProduct.contains(product)){
             System.out.println("Данный товар есть в корзине " + product);
             return true;
     }

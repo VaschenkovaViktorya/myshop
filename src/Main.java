@@ -13,6 +13,8 @@ public class Main {
         showCatalog();
         Customer vasya = new Customer();
         vasya.addToBasket(new Milk());
+        vasya.deleteFromBasket(new Milk());
+        vasya.showBasket();
         System.out.println();
     }
 

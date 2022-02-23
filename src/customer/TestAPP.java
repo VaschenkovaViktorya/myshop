@@ -14,14 +14,14 @@ public class TestAPP {
         int a = 0;
         customer.addToBasket(new Kefir());
         while (a < 12) {
-            customer.addToBasket(new Milk());
+            customer.addToBasket(kefir);
             a++;
             //  System.out.println(a);
         }
         customer.addToBasket(kefir);
         customer.showBasket();
         customer.deleteFromBasket(kefir);
-        // customer.findProductInBasket(kefir);
+        customer.findProductInBasket(kefir);
         customer.showBasket();
         System.out.println();
 //customer.deleteFromBasket(kefir);
