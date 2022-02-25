@@ -16,6 +16,16 @@ public class Main {
         vasya.deleteFromBasket(new Milk());
         vasya.showBasket();
         System.out.println();
+        Kefir kefir = new Kefir();
+        int a = 0;
+        vasya.addToBasket(new Kefir());
+        while (a < 12) {
+            vasya.addToBasket(kefir);
+            a++;
+            //  System.out.println(a);
+        }
+        vasya.saveBasket(vasya.getName());
+
     }
 
     private static void showCatalog() {

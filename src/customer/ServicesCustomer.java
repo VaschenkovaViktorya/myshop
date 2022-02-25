@@ -3,18 +3,19 @@ package customer;
 import basket.BasketOnArray;
 import basket.BasketOnList;
 import basket.BasketOnSet;
-import product.Kefir;
 import product.Product;
 
+//import static fileservice.IOOfBasket.writeBasketToFile;
+
 public abstract class ServicesCustomer {
-   //BasketOnList custBasket;
+    // BasketOnList custBasket;
     //BasketOnArray custBasket;
-    BasketOnSet custBasket;
+    public BasketOnSet custBasket;
     private int i = 0;//для счетчика товаров
 
     public boolean addToBasket(Product product) {
         if (this.custBasket == null) {
-           //custBasket = new BasketOnList();
+         // custBasket = new BasketOnList();
           // custBasket = new BasketOnArray();
             custBasket = new BasketOnSet();
         }
@@ -65,6 +66,17 @@ public abstract class ServicesCustomer {
 
     public void findProductInBasket(Product product) {
         custBasket.findProduct(product);
+    }
+
+//    public void writeToFile(FileWriter fw) throws IOException {
+//        fw.write(custBasket.toString());
+//        System.out.println("запись прошла");
+//    }
+
+    public void saveBasket(String name) {
+
+           custBasket.saveBasketToFile(name);
+
     }
 
 //    public void buyProduct() {

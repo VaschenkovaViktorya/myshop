@@ -2,6 +2,7 @@ package basket;
 
 import product.Product;
 
+import java.io.FileWriter;
 import java.util.ArrayList;
 
 public class BasketOnList implements Basket{
@@ -46,6 +47,24 @@ ArrayList<Product> listOfProduct = new ArrayList<Product>();
             return true;
     }
         System.out.println("Товар не найден");
+        return false;
+    }
+
+    @Override
+    public boolean saveBasketToFile(String name) {
+        try (FileWriter fw = new FileWriter("testfile/1.txt",true)){
+            fw.write(name+"\n");
+            for (Product p:
+                    listOfProduct) {
+                if (p==null) continue;
+                fw.write(p.getName() + " "+p.getPrice()+"\n");
+                System.out.println();
+            }
+            System.out.println("запись прошла");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return false;
     }
 }

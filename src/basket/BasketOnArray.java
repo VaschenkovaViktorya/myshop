@@ -3,6 +3,8 @@ package basket;
 import product.Milk;
 import product.Product;
 
+import java.io.FileWriter;
+
 public class BasketOnArray implements Basket {
     int id;
     public Product[] arrayOfProduct = new Product[10];
@@ -84,6 +86,24 @@ public class BasketOnArray implements Basket {
         }
         if (!isfinded) System.out.println("Товар " + p.getName() + " в корзине (Array) не найден");
         return false;
+    }
+
+    @Override
+    public boolean saveBasketToFile(String name) {
+
+        try (FileWriter fw = new FileWriter("testfile/1.txt",true)){
+            fw.write(name+"\n");
+            for (Product p:
+                    arrayOfProduct) {
+                if (p==null) continue;
+                fw.write(p.getName() + " "+p.getPrice()+"\n");
+                System.out.println();
+            }
+            System.out.println("запись прошла");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }return false;
     }
 
 }

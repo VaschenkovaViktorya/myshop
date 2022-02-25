@@ -2,6 +2,7 @@ package basket;
 
 import product.Product;
 
+import java.io.FileWriter;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -46,5 +47,34 @@ public class BasketOnSet implements Basket {
         }
         System.out.println("Товар не найден");
         return false;
+    }
+
+    @Override
+    public boolean saveBasketToFile(String name) {
+        try (FileWriter fw = new FileWriter("testfile/1.txt",true)){
+            fw.write(name+"\n");
+            for (Product p:
+                    setOfProduct) {
+                if (p==null) continue;
+                fw.write(p.getName() + " "+p.getPrice()+"\n");
+                System.out.println();
+            }
+            System.out.println("запись прошла");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    void writeTofile(){
+        for (Product p:setOfProduct) {
+
+        }
+    }
+    @Override
+    public String toString() {
+        return
+                "setOfProduct=" + setOfProduct;
     }
 }

@@ -8,4 +8,5 @@ public interface Basket {
     boolean clear();
     boolean printBasket();
     boolean findProduct(Product p);
+    boolean saveBasketToFile(String name);
 }
