@@ -20,5 +20,10 @@ public class Customer extends ServicesCustomer {
         custBasket = null;
     }
 
-
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }

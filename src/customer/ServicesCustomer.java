@@ -1,9 +1,16 @@
 package customer;
 
-import basket.BasketOnArray;
-import basket.BasketOnList;
+import basket.Basket;
 import basket.BasketOnSet;
 import product.Product;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 
 //import static fileservice.IOOfBasket.writeBasketToFile;
 
@@ -11,13 +18,15 @@ public abstract class ServicesCustomer {
     // BasketOnList custBasket;
     //BasketOnArray custBasket;
     public BasketOnSet custBasket;
+    Basket basket;
     private int i = 0;//для счетчика товаров
 
     public boolean addToBasket(Product product) {
         if (this.custBasket == null) {
-         // custBasket = new BasketOnList();
-          // custBasket = new BasketOnArray();
+            // custBasket = new BasketOnList();
+            // custBasket = new BasketOnArray();
             custBasket = new BasketOnSet();
+            basket = new BasketOnSet();
         }
         custBasket.addProduct(product);
         return true;
@@ -30,10 +39,11 @@ public abstract class ServicesCustomer {
     }
 
 
-   public boolean showBasket() {
+    public boolean showBasket() {
         custBasket.printBasket();
         return false;
     }
+
     public boolean payOrder() {
         return false;
     }
@@ -75,9 +85,41 @@ public abstract class ServicesCustomer {
 
     public void saveBasket(String name) {
 
-           custBasket.saveBasketToFile(name);
+        custBasket.saveBasketToFile(name);
 
     }
+
+    public void openBasketFromFile() {
+        try (BufferedReader br = new BufferedReader(new FileReader("testfile/1.txt"))) {
+            String currentLine = "";
+            System.out.println("вывод содержимого корзины из файла");
+            List<Customer> readCustomer =new ArrayList<>();
+            while ((currentLine = br.readLine()) != null) {
+                //System.out.println(currentLine);
+                if (convertStringToCustomer(currentLine)!=null){
+                    readCustomer.add(convertStringToCustomer(currentLine));
+                }
+
+
+            }
+            System.out.println(readCustomer);
+            System.out.println();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private static Customer convertStringToCustomer(String currentLine){
+
+        if (currentLine!=null&&currentLine.contains("Покупатель")){
+            Customer customer = new Customer();
+            customer.setName(currentLine.split(" ")[1]);
+            return customer;
+        }
+        return null;
+    }
+
 
 //    public void buyProduct() {
 //        System.out.println("*******************************");

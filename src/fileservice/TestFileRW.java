@@ -25,6 +25,7 @@ public class TestFileRW {
             //writeBasketToFile(customer);
             customer.saveBasket(customer.getName());
         }
+        customer.openBasketFromFile();
     }
 
 

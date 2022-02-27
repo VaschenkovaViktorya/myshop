@@ -2,6 +2,7 @@ import catalogofproduct.CatalogOfProduct;
 import customer.Customer;
 import customer.Vip;
 import customer.VipCustomer;
+import product.Cheese;
 import product.Kefir;
 import product.Milk;
 
@@ -24,8 +25,9 @@ public class Main {
             a++;
             //  System.out.println(a);
         }
-        vasya.saveBasket(vasya.getName());
-
+        vasya.addToBasket(new Cheese());
+        vasya.saveBasket(vasya.getName());// запись в файл
+        vasya.openBasketFromFile(); // чтение из файла
     }
 
     private static void showCatalog() {

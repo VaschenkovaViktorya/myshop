@@ -52,13 +52,14 @@ public class BasketOnSet implements Basket {
     @Override
     public boolean saveBasketToFile(String name) {
         try (FileWriter fw = new FileWriter("testfile/1.txt",true)){
-            fw.write(name+"\n");
+            fw.write("Покупатель "+name+"\n");
             for (Product p:
                     setOfProduct) {
                 if (p==null) continue;
-                fw.write(p.getName() + " "+p.getPrice()+"\n");
+                fw.write("товар "+p.getName() + " "+"цена "+p.getPrice()+"\n");
                 System.out.println();
             }
+            fw.flush();
             System.out.println("запись прошла");
 
         } catch (Exception e) {
