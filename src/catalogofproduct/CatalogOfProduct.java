@@ -8,15 +8,15 @@ public class CatalogOfProduct {
     public String[] getCatalog() {
         return catalog;
     }
-
-    private  String[] catalog={
-            "Продукты",
-            "Хозтовары",
-            "Одежда",
-            "Бытовая химия",
-            "Дача, сад",
-            "Автотовары"
-    };
+    private String[] catalog=null;
+//    private  String[] catalog={
+//            "Продукты",
+//            "Хозтовары",
+//            "Одежда",
+//            "Бытовая химия",
+//            "Дача, сад",
+//            "Автотовары"
+//    };
     public  void openCatalog(){
         for (String s:catalog
              ) {

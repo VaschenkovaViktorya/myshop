@@ -8,8 +8,9 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+
+//import static com.sun.org.apache.xerces.internal.impl.xpath.regex.CaseInsensitiveMap.updateMap;
 
 
 //import static fileservice.IOOfBasket.writeBasketToFile;
@@ -31,6 +32,7 @@ public abstract class ServicesCustomer {
         custBasket.addProduct(product);
         return true;
     }
+
 
     public boolean deleteFromBasket(Product product) {
         custBasket.deleteProduct(product);
@@ -89,6 +91,8 @@ public abstract class ServicesCustomer {
 
     }
 
+
+
     public void openBasketFromFile() {
         try (BufferedReader br = new BufferedReader(new FileReader("testfile/1.txt"))) {
             String currentLine = "";
@@ -111,6 +115,57 @@ public abstract class ServicesCustomer {
         }
     }
     private static Customer convertStringToCustomer(String currentLine){
+
+        if (currentLine!=null&&currentLine.contains("Покупатель")){
+            Customer customer = new Customer();
+            customer.setName(currentLine.split(" ")[1]);
+            return customer;
+        }
+        return null;
+    }
+
+    public void openBasketFromFile2() {
+        try (BufferedReader br = new BufferedReader(new FileReader("testfile/1.txt"))) {
+            String currentLine = "";
+            System.out.println("вывод содержимого корзины из файла");
+            Map<Customer, String[]> readCustomer =new HashMap<>();
+            while ((currentLine = br.readLine()) != null) {
+                //System.out.println(currentLine);
+                if (convertStringToCustomer(currentLine)!=null){
+                    //readCustomer.put(convertStringToCustomer(currentLine));
+                    updateMap(readCustomer, currentLine);
+                   //b readCustomer.entrySet()
+                }
+
+
+            }
+            System.out.println(readCustomer);
+            System.out.println();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void updateMap(Map<Customer, String[]> readCustomer, String currentLine) {
+       List <String> product = new ArrayList<>();
+       boolean flag= false;
+        if (currentLine!=null){
+            if (currentLine.contains("Покупатель")){
+                Customer customer = new Customer();
+                customer.setName(currentLine.split(" ")[1]);
+            }
+            else if (currentLine.contains("товар")){
+                product.add(currentLine);
+            }
+
+
+
+        }
+    }
+
+    private static Customer convertStringToCustomer2(String currentLine){
 
         if (currentLine!=null&&currentLine.contains("Покупатель")){
             Customer customer = new Customer();

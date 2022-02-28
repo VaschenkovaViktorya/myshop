@@ -1,4 +1,5 @@
 import catalogofproduct.CatalogOfProduct;
+import catalogofproduct.CatalogOfProductInvalidException;
 import customer.Customer;
 import customer.Vip;
 import customer.VipCustomer;
@@ -11,7 +12,12 @@ import java.util.Collection;
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello");
-        showCatalog();
+        try {
+            showCatalog();
+        } catch (CatalogOfProductInvalidException e) {
+            System.out.println(e.getMessage());;
+        }
+
         Customer vasya = new Customer();
         vasya.addToBasket(new Milk());
         vasya.deleteFromBasket(new Milk());
@@ -28,14 +34,19 @@ public class Main {
         vasya.addToBasket(new Cheese());
         vasya.saveBasket(vasya.getName());// запись в файл
         vasya.openBasketFromFile(); // чтение из файла
+        vasya.openBasketFromFile2();
     }
 
-    private static void showCatalog() {
+    private static void showCatalog() throws CatalogOfProductInvalidException {
+
         CatalogOfProduct cat = new CatalogOfProduct();
-        cat.getCatalog();
-        for (String s : cat.getCatalog()) {
-            System.out.println(s);
+        if (cat.getCatalog() == null) throw new CatalogOfProductInvalidException("**************Каталог товаров пуст**************");
+        else {
+            for (String s : cat.getCatalog()) {
+                System.out.println(s);
+            }
         }
+
         ;
     }
 }
