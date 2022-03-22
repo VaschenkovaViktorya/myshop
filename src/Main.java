@@ -1,5 +1,7 @@
+import catalogofproduct.Catalog;
 import catalogofproduct.CatalogOfProduct;
 import catalogofproduct.CatalogOfProductInvalidException;
+import catalogofproduct.CatalogOnList;
 import customer.Customer;
 import customer.Vip;
 import customer.VipCustomer;
@@ -12,12 +14,18 @@ import java.util.Collection;
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello");
-        try {
-            showCatalog();
-        } catch (CatalogOfProductInvalidException e) {
-            System.out.println(e.getMessage());;
-        }
-
+//        try {
+//            CatalogOfProduct.showCatalog();
+//        } catch (CatalogOfProductInvalidException e) {
+//            System.out.println(e.getMessage());;
+//        }
+// Пример паттерна Singleton
+        Catalog catalog = CatalogOnList.getInstance();
+        catalog.showCatalog();
+        Catalog catalog2 = CatalogOnList.getInstance();
+        catalog2.showCatalog();
+        catalog.createCatalog();
+  // -----Пример паттерна Singleton
         Customer vasya = new Customer();
         vasya.addToBasket(new Milk());
         vasya.deleteFromBasket(new Milk());
@@ -37,16 +45,5 @@ public class Main {
         vasya.openBasketFromFile2();
     }
 
-    private static void showCatalog() throws CatalogOfProductInvalidException {
 
-        CatalogOfProduct cat = new CatalogOfProduct();
-        if (cat.getCatalog() == null) throw new CatalogOfProductInvalidException("**************Каталог товаров пуст**************");
-        else {
-            for (String s : cat.getCatalog()) {
-                System.out.println(s);
-            }
-        }
-
-        ;
-    }
 }

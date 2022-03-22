@@ -24,5 +24,16 @@ public class CatalogOfProduct {
 
         }
     }
+    public static void showCatalog() throws CatalogOfProductInvalidException {
 
+        CatalogOfProduct cat = new CatalogOfProduct();
+        if (cat.getCatalog() == null) throw new CatalogOfProductInvalidException("**************Каталог товаров пуст**************");
+        else {
+            for (String s : cat.getCatalog()) {
+                System.out.println(s);
+            }
+        }
+
+        ;
+    }
 }

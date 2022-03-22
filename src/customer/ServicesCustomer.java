@@ -92,15 +92,14 @@ public abstract class ServicesCustomer {
     }
 
 
-
     public void openBasketFromFile() {
         try (BufferedReader br = new BufferedReader(new FileReader("testfile/1.txt"))) {
             String currentLine = "";
             System.out.println("вывод содержимого корзины из файла");
-            List<Customer> readCustomer =new ArrayList<>();
+            List<Customer> readCustomer = new ArrayList<>();
             while ((currentLine = br.readLine()) != null) {
                 //System.out.println(currentLine);
-                if (convertStringToCustomer(currentLine)!=null){
+                if (convertStringToCustomer(currentLine) != null) {
                     readCustomer.add(convertStringToCustomer(currentLine));
                 }
 
@@ -114,9 +113,10 @@ public abstract class ServicesCustomer {
             e.printStackTrace();
         }
     }
-    private static Customer convertStringToCustomer(String currentLine){
 
-        if (currentLine!=null&&currentLine.contains("Покупатель")){
+    private static Customer convertStringToCustomer(String currentLine) {
+
+        if (currentLine != null && currentLine.contains("Покупатель")) {
             Customer customer = new Customer();
             customer.setName(currentLine.split(" ")[1]);
             return customer;
@@ -128,13 +128,13 @@ public abstract class ServicesCustomer {
         try (BufferedReader br = new BufferedReader(new FileReader("testfile/1.txt"))) {
             String currentLine = "";
             System.out.println("вывод содержимого корзины из файла");
-            Map<Customer, String[]> readCustomer =new HashMap<>();
+            Map<Customer, String[]> readCustomer = new HashMap<>();
             while ((currentLine = br.readLine()) != null) {
                 //System.out.println(currentLine);
-                if (convertStringToCustomer(currentLine)!=null){
+                if (convertStringToCustomer(currentLine) != null) {
                     //readCustomer.put(convertStringToCustomer(currentLine));
                     updateMap(readCustomer, currentLine);
-                   //b readCustomer.entrySet()
+                    //b readCustomer.entrySet()
                 }
 
 
@@ -149,25 +149,23 @@ public abstract class ServicesCustomer {
     }
 
     private void updateMap(Map<Customer, String[]> readCustomer, String currentLine) {
-       List <String> product = new ArrayList<>();
-       boolean flag= false;
-        if (currentLine!=null){
-            if (currentLine.contains("Покупатель")){
+        List<String> product = new ArrayList<>();
+        boolean flag = false;
+        if (currentLine != null) {
+            if (currentLine.contains("Покупатель")) {
                 Customer customer = new Customer();
                 customer.setName(currentLine.split(" ")[1]);
-            }
-            else if (currentLine.contains("товар")){
+            } else if (currentLine.contains("товар")) {
                 product.add(currentLine);
             }
-
 
 
         }
     }
 
-    private static Customer convertStringToCustomer2(String currentLine){
+    private static Customer convertStringToCustomer2(String currentLine) {
 
-        if (currentLine!=null&&currentLine.contains("Покупатель")){
+        if (currentLine != null && currentLine.contains("Покупатель")) {
             Customer customer = new Customer();
             customer.setName(currentLine.split(" ")[1]);
             return customer;
