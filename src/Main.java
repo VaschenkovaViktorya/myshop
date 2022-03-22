@@ -25,7 +25,7 @@ public class Main {
         Catalog catalog2 = CatalogOnList.getInstance();
         catalog2.showCatalog();
         catalog.createCatalog();
-  // -----Пример паттерна Singleton
+        // -----Пример паттерна Singleton
         Customer vasya = new Customer();
         vasya.addToBasket(new Milk());
         vasya.deleteFromBasket(new Milk());

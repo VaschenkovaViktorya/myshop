@@ -10,16 +10,18 @@ import java.util.List;
 public class CatalogOnList implements Catalog {
     public static CatalogOnList cat;
     List<String> catalog = null;
-    DataBaseForCatalog db=null;
+    DataBaseForCatalog db = null;
 
     private CatalogOnList() {
-     }
+    }
+
     public static CatalogOnList getInstance() {
         if (cat == null) {
             cat = new CatalogOnList();
         }
         return cat;
     }
+
     @Override
     public void showCatalog() {
         //if (catalog==null)
@@ -35,13 +37,13 @@ public class CatalogOnList implements Catalog {
 
         catalog = readFromBD();
         // if (catalog != null)
-            printCatalog(this.catalog);
+        printCatalog(this.catalog);
 
     }
 
     private List<String> readFromBD() {
         List<String> catalog = new ArrayList<>();
-        db=DataBaseForCatalog.getInstance();
+        db = DataBaseForCatalog.getInstance();
         try (BufferedReader br = new BufferedReader(new FileReader(db.readDataFromDB()))) {
             String currentLine = "";
             while ((currentLine = br.readLine()) != null) {
