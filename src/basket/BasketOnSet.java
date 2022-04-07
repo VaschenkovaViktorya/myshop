@@ -60,6 +60,7 @@ public class BasketOnSet implements Basket {
                 System.out.println();
             }
             fw.flush();
+
             System.out.println("запись прошла");
 
         } catch (Exception e) {

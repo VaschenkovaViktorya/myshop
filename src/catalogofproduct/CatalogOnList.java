@@ -41,6 +41,11 @@ public class CatalogOnList implements Catalog {
 
     }
 
+    @Override
+    public void createCatalog(String s) {
+
+    }
+
     private List<String> readFromBD() {
         List<String> catalog = new ArrayList<>();
         db = DataBaseForCatalog.getInstance();
